@@ -17,7 +17,7 @@ import com.onlineinteract.beansspel.model.Game;
 @EnableAutoConfiguration
 public class BeansSpElController {
 
-	private static final String el1 = "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
+	private static final String ENTITLEMENTS_1_IMPORTANT = "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
 			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
 			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14";
 	
@@ -37,7 +37,7 @@ public class BeansSpElController {
 	}
 
 	@RequestMapping("/important")
-	@PreAuthorize(el1)
+	@PreAuthorize(ENTITLEMENTS_1_IMPORTANT)
 	public void important(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Important method invoked successfully");
 	}
