@@ -1,11 +1,15 @@
 package com.onlineinteract.beansspel.rest;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.onlineinteract.beansspel.model.Game;
 
@@ -13,6 +17,10 @@ import com.onlineinteract.beansspel.model.Game;
 @EnableAutoConfiguration
 public class BeansSpElController {
 
+	private static final String el1 = "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
+			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
+			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14";
+	
 	@Autowired
 	@Qualifier(value = "rock")
 	Game game;
@@ -22,10 +30,15 @@ public class BeansSpElController {
 		game.setName("Space Rock");
 		game.setLength(4);
 		game.setWidth(3);
-		game.setVolume(12);
 		System.out.println();
 		game.play();
 		game.printDetails();
 		System.out.println();
+	}
+
+	@RequestMapping("/important")
+	@PreAuthorize(el1)
+	public void important(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("Important method invoked successfully");
 	}
 }

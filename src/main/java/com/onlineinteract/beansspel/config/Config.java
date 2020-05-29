@@ -10,12 +10,12 @@ import com.onlineinteract.beansspel.model.Rock;
 @Configuration
 public class Config {
 
-	@Bean()
+	@Bean("rock")
 	public Game rock() {
 		return new Rock();
 	}
 
-	@Bean
+	@Bean("paper")
 	public Game paper() {
 		return new Paper();
 	}

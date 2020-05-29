@@ -1,9 +1,12 @@
 package com.onlineinteract.beansspel.model;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public abstract class Game {
 	String name;
 	int width;
 	int length;
+	@Value("#{10 + 4}")
 	int volume;
 
 	public abstract void play();
