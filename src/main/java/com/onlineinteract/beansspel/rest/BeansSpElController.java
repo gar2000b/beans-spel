@@ -19,6 +19,13 @@ public class BeansSpElController {
 
 	@PostConstruct
 	public void play() {
+		game.setName("Space Rock");
+		game.setLength(4);
+		game.setWidth(3);
+		game.setVolume(12);
+		System.out.println();
 		game.play();
+		game.printDetails();
+		System.out.println();
 	}
 }

@@ -1,6 +1,6 @@
 package com.onlineinteract.beansspel.model;
 
-public class Scissors implements Game {
+public class Scissors extends Game {
 
 	@Override
 	public void play() {
