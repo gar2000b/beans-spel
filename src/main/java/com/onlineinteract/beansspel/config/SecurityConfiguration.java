@@ -5,9 +5,16 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+//import com.onlineinteract.beansspel.config.handler.CustomAccessDeniedHandler;
+
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+//	@Bean
+//	public AccessDeniedHandler accessDeniedHandler() {
+//		return new CustomAccessDeniedHandler();
+//	}
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {

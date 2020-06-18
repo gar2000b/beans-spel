@@ -6,20 +6,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.onlineinteract.beansspel.model.Game;
+import com.onlineinteract.beansspel.process.InfoProcessor;
 
-@Controller
-@EnableAutoConfiguration
+@RestController
+//@EnableAutoConfiguration
 public class BeansSpElController {
 
 	private static final String ENTITLEMENTS_1_IMPORTANT = "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
 			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14 && "
 			+ "@rock.volume == 14 && @rock.volume == 14 && @rock.volume == 14";
+
+	@Autowired
+	InfoProcessor infoProcessor;
 	
 	@Autowired
 	@Qualifier(value = "rock")
@@ -37,8 +39,10 @@ public class BeansSpElController {
 	}
 
 	@RequestMapping("/important")
-	@PreAuthorize(ENTITLEMENTS_1_IMPORTANT)
+	// @PreAuthorize(ENTITLEMENTS_1_IMPORTANT)
 	public void important(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Important method invoked successfully");
+		// throw new RuntimeException("test exception");
+		infoProcessor.process();
 	}
 }
